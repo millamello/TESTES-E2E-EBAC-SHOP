@@ -86,5 +86,5 @@ Cypress.Commands.add('EnderecoFaturamento', (endereco) => {
         cy.get('#billing_email').type('camila@teste.com.br')
         cy.get('#terms').click()
         cy.get('#place_order').click()
-        
+        cy.get('#place_order').click( {force:true} )
     })
