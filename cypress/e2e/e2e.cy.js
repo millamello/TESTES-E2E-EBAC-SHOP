@@ -9,10 +9,14 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         Adicionando ao carrinho
         Preenchendo todas opções no checkout
         E validando minha compra ao final */
+        
 
     beforeEach(() => {
         cy.visit('http://lojaebac.ebaconline.art.br/')
+
+        
     });
+
 
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
         cy.adicionarProduto('Atlas Fitness Tank')
@@ -22,6 +26,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('.dropdown-toggle > .text-skin > .icon-basket').click()
         cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click()
         cy.EnderecoFaturamento()
+        cy.get('.woocommerce-notice').should('contain' , 'Pedido efetuado.')
+        
         
     })
     
